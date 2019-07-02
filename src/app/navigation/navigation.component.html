@@ -7,20 +7,33 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
   >
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar color="primary"> <span>Menu</span> </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#"> <mat-icon>home</mat-icon>Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <mat-list-item>
+        <button mat-icon-button>
+          <mat-icon>event</mat-icon>
+        </button>
+        <span class="nav-button">Event View</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-icon-button>
+          <mat-icon>notes</mat-icon>
+        </button>
+        <span class="nav-button">Notes</span>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-icon-button>
+          <mat-icon>list_alt</mat-icon>
+        </button>
+        <span class="nav-button">Todos</span>
+      </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-      >
+      <button aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <span>HelperHusky</span>
