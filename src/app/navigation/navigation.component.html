@@ -5,7 +5,7 @@
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [opened]="(isHandset$ | async) === true"
   >
     <mat-toolbar color="primary"> <span>Menu</span> </mat-toolbar>
     <mat-nav-list>
@@ -36,9 +36,9 @@
       <button aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="../../assets/music husky.PNG" height=35 width=30/>
+      <img src="../../assets/music husky.PNG" height="35" width="30" />
       <span>Helper Husky</span>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

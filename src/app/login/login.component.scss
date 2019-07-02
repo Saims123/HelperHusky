@@ -1,0 +1,15 @@
+.container {
+  margin: 0 auto;
+  text-align: center;
+.side{
+  display: inline-flex;
+  img {
+    flex: 1;
+    height: 400px;
+    width: 350px;
+  }
+  .right{
+    flex:1;
+  }
+}
+}
