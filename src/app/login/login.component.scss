@@ -1,15 +1,17 @@
 .container {
-  margin: 0 auto;
-  text-align: center;
-.side{
-  display: inline-flex;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   img {
-    flex: 1;
-    height: 400px;
-    width: 350px;
+    width: 200px;
   }
-  .right{
-    flex:1;
+
+  .right {
+    text-align: center;
   }
 }
+button {
+  width: 80%;
 }

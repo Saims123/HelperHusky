@@ -38,13 +38,6 @@ export class AuthService {
     if (result) {
       this.isAuth = true;
       this.user = await this.getUser();
-      if (this.user.jobTitle !== 'Student') {
-        this.isSupervisor = true;
-      }
-      if (this.user.mail === 'i7467177@bournemouth.ac.uk') {
-        // Special case to bypass supervisor role
-        this.isSupervisor = true;
-      }
     }
   }
 
