@@ -13,6 +13,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { MsalModule } from '@azure/msal-angular';
 import { OAuthSettings } from './services/auth/oauth';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(en);
 @NgModule({
@@ -21,6 +22,7 @@ registerLocaleData(en);
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     RouterModule,
+    ToastrModule.forRoot(),
     MsalModule.forRoot({
       clientID: OAuthSettings.appId,
       authority: 'https://login.microsoftonline.com/stevesimhotmail.onmicrosoft.com/',

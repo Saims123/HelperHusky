@@ -4,6 +4,8 @@ import { User } from './user';
 import { OAuthSettings } from './oauth';
 import { Client } from '@microsoft/microsoft-graph-client';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 /**
  *  Authentication Services allows users to login and logout of the application.
  *
@@ -18,12 +20,11 @@ export class AuthService {
   public isAuth: boolean;
   public isTokenReady: boolean;
   public user: User;
-  public isSupervisor: boolean;
-  constructor(private msalService: MsalService, private router: Router) {
+
+  constructor(private msalService: MsalService, private router: Router, private toastService: ToastrService) {
     this.isAuth = false;
     this.isTokenReady = true;
     this.user = null;
-    this.isSupervisor = false;
     this.isAuth = this.msalService.getUser() != null;
     this.getUser().then(user => {
       this.user = user;
@@ -34,10 +35,16 @@ export class AuthService {
     this.isTokenReady = false;
     let result = await this.msalService.loginPopup(OAuthSettings.scopes).catch(reason => {
       console.warn('Login failed', JSON.stringify(reason, null, 2));
+      this.toastService.error(JSON.stringify(reason, null, 2), 'Login Retrival error', {
+        timeOut: 20000,
+        progressBar: true
+      });
     });
     if (result) {
       this.isAuth = true;
       this.user = await this.getUser();
+      this.router.navigate(['/calendar']);
+
     }
   }
 
@@ -95,14 +102,6 @@ export class AuthService {
     user.id = graphUser.id;
     user.jobTitle = graphUser.jobTitle;
     user.location = graphUser.location;
-
-    if (user.jobTitle !== 'Student') {
-      this.isSupervisor = true;
-    }
-    if (user.mail === 'i7467177@bournemouth.ac.uk') {
-      // Special case to bypass supervisor role
-      this.isSupervisor = true;
-    }
     return user;
   }
 }
