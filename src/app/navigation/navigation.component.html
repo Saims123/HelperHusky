@@ -5,13 +5,13 @@
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false"
+    [opened]="(isHandset$ | async) === true"
   >
     <mat-toolbar color="primary"> <span>Menu</span> </mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list style="background: inherit">
       <mat-list-item>
         <button mat-icon-button>
-          <mat-icon>event</mat-icon>
+          <i nz-icon style="font-size: 20px;" nzType="calendar" nzTheme="outline"></i>
         </button>
         <span class="nav-button">Event View</span>
       </mat-list-item>
@@ -32,13 +32,38 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <!--Header Toolbar-->
     <mat-toolbar color="primary">
-      <button aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <img src="../../assets/music husky.PNG" height=35 width=30/>
-      <span>Helper Husky</span>
+      <mat-toolbar-row>
+        <button
+          *ngIf="authService.isAuth"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img src="../../assets/music husky.PNG" height="35" width="30" />
+        <span>Helper Husky</span>
+        <span class="example-spacer"></span>
+        <div *ngIf="authService.isAuth" class="avatar">
+          <span> Hi {{ authService.user?.displayName }}!</span>
+          <mat-menu #appAvatar="matMenu">
+            <div style="margin: 5px;">
+              <p class="mat-h4" *ngIf="authService.isAuth">ID : {{ authService.user?.id }}</p>
+            </div>
+            <mat-divider></mat-divider>
+            <button (click)="logout()" mat-menu-item>Logout</button>
+          </mat-menu>
+
+          <button mat-icon-button [matMenuTriggerFor]="authService.isAuth ? appAvatar : ''">
+            <nz-avatar [nzSize]="32" nzIcon="user"></nz-avatar>
+          </button>
+        </div>
+      </mat-toolbar-row>
+        <mat-progress-bar *ngIf="!authService.isTokenReady" color="accent" mode="indeterminate"></mat-progress-bar>
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <!--Cotent for navigation-->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
