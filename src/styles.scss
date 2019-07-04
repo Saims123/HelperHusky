@@ -4,7 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
-@import '~@fullcalendar/bootstrap/main.css';
+@import '~@fullcalendar/list/main.css';
+
 
 /* Remove that awful yellow color and border from today in Schedule */
 .fc-state-highlight {
@@ -19,7 +20,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 background-color: #78909c;
 }
 .fc-unthemed .fc-today{
-  background-color: #1976d2 !important;
+ background-color: #76abff !important;
+ .fc-day-number{
+    font-synthesis: weight;
+ }
 }
 /* Styling for each event from Schedule */
 .fc-time-grid-event.fc-v-event.fc-event {
