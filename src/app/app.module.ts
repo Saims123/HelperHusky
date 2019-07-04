@@ -13,11 +13,14 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { MsalModule } from '@azure/msal-angular';
 import { OAuthSettings } from './services/auth/oauth';
+
+import { FullCalendarModule } from '@fullcalendar/angular';
 import { ToastrModule } from 'ngx-toastr';
+import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 
 registerLocaleData(en);
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, LoginComponent],
+  declarations: [AppComponent, NavigationComponent, LoginComponent, CalendarViewComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
@@ -30,7 +33,8 @@ registerLocaleData(en);
     }),
     MaterialModule,
     NgZorroAntdModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
