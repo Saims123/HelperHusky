@@ -17,7 +17,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-calendar-view',
   templateUrl: './calendar-view.component.html',
-  styleUrls: ['./calendar-view.component.scss'],
+  styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent implements OnInit, AfterViewInit {
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
@@ -26,13 +26,11 @@ export class CalendarViewComponent implements OnInit, AfterViewInit {
   events: any[] = [];
   constructor(public graphService: GraphService, public cdr: ChangeDetectorRef) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   ngAfterViewInit() {
     this.graphService
-      .getEvents()
+      .getEventsOfTheYear()
       .then(data => {
         console.log(data);
         return data.map(event => {
@@ -44,10 +42,9 @@ export class CalendarViewComponent implements OnInit, AfterViewInit {
         });
       })
       .then(newEvent => {
+        this.events = newEvent;
         this.isLoaded = true;
-        this.calendarComponent.events = newEvent;
-        this.calendarComponent.getApi().addEventSource(newEvent);
-        this.calendarComponent.getApi().rerenderEvents();
+        this.cdr.detectChanges();
         console.log(this.calendarComponent.events);
       });
   }

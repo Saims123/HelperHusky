@@ -90,7 +90,7 @@ export class GraphService {
 
     try {
       let result = await this.graphClient
-        .api(`/me/events?startdatetime=${startOfYear}&enddatetime=${endOfYear}`)
+        .api(`/me/calendar/events?startdatetime=${startOfYear}&enddatetime=${endOfYear}`)
         .select(['subject', 'start', 'end'])
         .get();
       return result.value;

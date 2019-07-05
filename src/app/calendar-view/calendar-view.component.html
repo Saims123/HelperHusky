@@ -1,5 +1,7 @@
 <div class="calendar">
-  <full-calendar #calendar
+  <mat-spinner *ngIf="!isLoaded">Loading binky data</mat-spinner>
+  <full-calendar  *ngIf="isLoaded"
+    #calendar
     [handleWindowResize]="true"
     [weekNumbersWithinDays]="true"
     [displayEventTime]="true"
@@ -8,12 +10,11 @@
       center: 'title',
       right: ' prev,today,next'
     }"
+    [events]="events"
     [deepChangeDetection]="true"
     [aspectRatio]="1.8"
     [themeSystem]="'bootstrap'"
     defaultView="dayGridMonth"
     [plugins]="calendarPlugins"
   ></full-calendar>
-
-  <nz-card-loading *ngIf="!isLoaded"></nz-card-loading>
 </div>
