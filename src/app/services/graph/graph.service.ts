@@ -80,17 +80,17 @@ export class GraphService {
    * Graph API to GET authenticated user's Calendar Event based on the current week
    * @return Event
    */
-  async getEventsOnCurrentWeek(): Promise<Event[]> {
-    const startOfWeek = moment()
-      .startOf('isoWeek')
-      .format('YYYY-MM-DDThh:mm:ss');
-    const endOfWeek = moment()
-      .endOf('isoWeek')
+  async getEventsOfTheYear(): Promise<Event[]> {
+    const startOfYear = moment()
+      .startOf('year')
+      .format('YYYY-MM-1Thh:mm:ss');
+    const endOfYear = moment()
+      .endOf('year')
       .format('YYYY-MM-DDThh:mm:ss');
 
     try {
       let result = await this.graphClient
-        .api(`/me/calendarview?startdatetime=${startOfWeek}&enddatetime=${endOfWeek}`)
+        .api(`/me/events?startdatetime=${startOfYear}&enddatetime=${endOfYear}`)
         .select(['subject', 'start', 'end'])
         .get();
       return result.value;

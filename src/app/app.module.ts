@@ -28,7 +28,6 @@ registerLocaleData(en);
     ToastrModule.forRoot(),
     MsalModule.forRoot({
       clientID: OAuthSettings.appId,
-      authority: 'https://login.microsoftonline.com/stevesimhotmail.onmicrosoft.com/',
       postLogoutRedirectUri: window.location.origin
     }),
     MaterialModule,

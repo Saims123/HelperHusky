@@ -1,16 +1,19 @@
 <div class="calendar">
-  <full-calendar
-  [handleWindowResize]=true
-    [weekNumbersWithinDays]=true
-    [displayEventTime]=true
+  <full-calendar #calendar
+    [handleWindowResize]="true"
+    [weekNumbersWithinDays]="true"
+    [displayEventTime]="true"
     [header]="{
       left: 'dayGridMonth,listWeek',
       center: 'title',
       right: ' prev,today,next'
     }"
-    [aspectRatio]=1.8
+    [deepChangeDetection]="true"
+    [aspectRatio]="1.8"
     [themeSystem]="'bootstrap'"
     defaultView="dayGridMonth"
     [plugins]="calendarPlugins"
   ></full-calendar>
+
+  <nz-card-loading *ngIf="!isLoaded"></nz-card-loading>
 </div>
