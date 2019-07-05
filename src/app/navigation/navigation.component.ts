@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../services/auth/auth.service';
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'navigation-bar',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })

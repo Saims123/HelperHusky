@@ -20,7 +20,7 @@ import * as moment from 'moment';
   styleUrls: ['./calendar-view.component.scss']
 })
 export class CalendarViewComponent implements OnInit, AfterViewInit {
-  @ViewChild('calendar') calendarComponent: FullCalendarComponent;
+  @ViewChild('calendar', null) calendarComponent: FullCalendarComponent;
   isLoaded = false;
   calendarPlugins = [dayGridPlugin, listPlugin, timeGrigPlugin]; // important!
   events: any[] = [];

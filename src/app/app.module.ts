@@ -20,7 +20,7 @@ import { CalendarViewComponent } from './calendar-view/calendar-view.component';
 
 registerLocaleData(en);
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, LoginComponent, CalendarViewComponent],
+  declarations: [NavigationComponent, AppComponent, LoginComponent, CalendarViewComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
