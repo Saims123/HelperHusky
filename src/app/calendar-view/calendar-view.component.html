@@ -1,6 +1,11 @@
 <div class="calendar">
-  <mat-spinner *ngIf="!isLoaded">Loading binky data</mat-spinner>
-  <full-calendar  *ngIf="isLoaded"
+  <div *ngIf="!isLoaded">
+    <mat-spinner ></mat-spinner>
+    Loading binky data
+  </div>
+
+  <full-calendar
+    *ngIf="isLoaded"
     #calendar
     [handleWindowResize]="true"
     [weekNumbersWithinDays]="true"
