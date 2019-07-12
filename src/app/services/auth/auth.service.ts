@@ -43,6 +43,7 @@ export class AuthService {
     if (result) {
       this.isAuth = true;
       this.user = await this.getUser();
+      this.router.navigate(['/calendar']);
     }
   }
 
