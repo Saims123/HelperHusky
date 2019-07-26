@@ -5,7 +5,7 @@
     fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === true"
+    [opened]="(isHandset$ | async) === false"
   >
     <mat-toolbar color="primary"> <span>Menu</span> </mat-toolbar>
     <mat-nav-list style="background: inherit">
@@ -16,7 +16,7 @@
         <span class="nav-button">Event View</span>
       </mat-list-item>
 
-      <mat-list-item>
+      <!-- <mat-list-item>
         <button mat-icon-button>
           <mat-icon>notes</mat-icon>
         </button>
@@ -28,7 +28,7 @@
           <mat-icon>list_alt</mat-icon>
         </button>
         <span class="nav-button">Todos</span>
-      </mat-list-item>
+      </mat-list-item> -->
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

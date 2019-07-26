@@ -14,7 +14,6 @@ describe('GraphService', () => {
         RouterTestingModule,
         MsalModule.forRoot({
           clientID: OAuthSettings.appId,
-          authority: 'https://login.microsoftonline.com/livebournemouthac.onmicrosoft.com/',
           postLogoutRedirectUri: window.location.origin
         }),
         ToastrModule.forRoot()

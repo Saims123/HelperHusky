@@ -69,15 +69,13 @@ export class GraphService {
               timeOut: 20000,
               progressBar: true
             });
+            return null;
           }
-        })
-        .then(user => {
-          return user;
         })
     );
   }
   /**
-   * Graph API to GET authenticated user's Calendar Event based on the current week
+   * Graph API to GET authenticated user's Calendar Event based on the current year
    * @return Event
    */
   async getEventsOfTheYear(): Promise<Event[]> {
@@ -90,7 +88,7 @@ export class GraphService {
 
     try {
       let result = await this.graphClient
-        .api(`/me/calendar/events?startdatetime=${startOfYear}&enddatetime=${endOfYear}`)
+        .api(`/me/calendarView/delta?startdatetime=${startOfYear}&enddatetime=${endOfYear}`)
         .select(['subject', 'start', 'end'])
         .get();
       return result.value;

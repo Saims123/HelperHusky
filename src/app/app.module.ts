@@ -28,7 +28,8 @@ registerLocaleData(en);
     ToastrModule.forRoot(),
     MsalModule.forRoot({
       clientID: OAuthSettings.appId,
-      postLogoutRedirectUri: window.location.origin
+      postLogoutRedirectUri: window.location.origin,
+      cacheLocation : 'localStorage'
     }),
     MaterialModule,
     NgZorroAntdModule,
